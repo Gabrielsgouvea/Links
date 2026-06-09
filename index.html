@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Gabriel S. Gouvea - Links Oficiais</title>
+    <meta name="description" content="Acesse todos os canais oficiais de Gabriel S. Gouvea: Inteligência Artificial (Sinapse IA), Finanças (Realidade Financeira), Ciência (Fragmentos Estelares), TikTok e Instagram.">
+    <meta name="author" content="Gabriel S. Gouvea">
+    
+    <!-- Open Graph (Facebook / LinkedIn) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Gabriel S. Gouvea - Links Oficiais">
+    <meta property="og:description" content="Conecte-se com os canais e redes de Inteligência Artificial, Finanças e Ciência.">
+    <meta property="og:image" content="avatar.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Gabriel S. Gouvea - Links Oficiais">
+    <meta property="twitter:description" content="Conecte-se com os canais e redes de Inteligência Artificial, Finanças e Ciência.">
+    <meta property="twitter:image" content="avatar.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Base Reset & Variables */
+        :root {
+            --bg-color: #03010c;
+            --text-color: #ffffff;
+            --text-muted: #a1a1cb;
+            --glass-bg: rgba(13, 10, 31, 0.45);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-border-hover: rgba(0, 229, 255, 0.3);
+            --glow-color: rgba(0, 229, 255, 0.4);
+            --primary-gradient: linear-gradient(135deg, #00e5ff 0%, #b388ff 50%, #ff4081 100%);
+            --youtube-color: #ff0000;
+            --tiktok-color: #00f2fe;
+            --instagram-color: #f77737;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Ambient Nebula Background */
+        #stars-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .nebula {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(100px);
+            z-index: -2;
+            opacity: 0.5;
+            animation: drift 25s infinite ease-in-out alternate;
+            pointer-events: none;
+        }
+
+        .nebula-purple {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(147, 51, 234, 0.3) 0%, rgba(0, 0, 0, 0) 70%);
+            top: -10%;
+            left: -10%;
+        }
+
+        .nebula-blue {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.25) 0%, rgba(0, 0, 0, 0) 70%);
+            bottom: -10%;
+            right: -10%;
+            animation-delay: -7s;
+        }
+
+        .nebula-pink {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(244, 63, 94, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+            top: 40%;
+            left: 30%;
+            animation-delay: -14s;
+        }
+
+        @keyframes drift {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+            50% {
+                transform: translate(40px, -40px) scale(1.1);
+            }
+            100% {
+                transform: translate(-20px, 20px) scale(0.95);
+            }
+        }
+
+        /* Container Layout */
+        .container {
+            width: 100%;
+            max-width: 580px;
+            padding: 40px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 10;
+        }
+
+        /* Profile Header */
+        .profile-header {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .avatar-container {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+        }
+
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            z-index: 2;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .avatar-glow {
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            border-radius: 50%;
+            background: var(--primary-gradient);
+            z-index: 1;
+            opacity: 0.7;
+            filter: blur(8px);
+            animation: pulseGlow 4s infinite alternate;
+        }
+
+        .avatar-container:hover .profile-avatar {
+            transform: scale(1.08) rotate(5deg);
+        }
+
+        .profile-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(0, 229, 255, 0.2);
+        }
+
+        .profile-tagline {
+            font-size: 16px;
+            color: var(--text-muted);
+            font-weight: 300;
+            margin-bottom: 16px;
+            letter-spacing: 0.5px;
+        }
+
+        .bio-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            max-width: 420px;
+            margin: 0 auto;
+        }
+
+        .bio-tag {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 6px 12px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #d1d1f0;
+            backdrop-filter: blur(4px);
+        }
+
+        .bio-tag i {
+            font-size: 11px;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Links List */
+        .links-list {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            margin-bottom: 40px;
+        }
+
+        /* Glassmorphic Link Card */
+        .link-card {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 16px 20px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 18px;
+            text-decoration: none;
+            color: var(--text-color);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+            transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+            opacity: 0;
+            animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Shimmer Glow effect inside cards */
+        .link-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.08),
+                transparent
+            );
+            transition: 0.6s;
+        }
+
+        .link-card:hover::before {
+            left: 150%;
+        }
+
+        .link-card:hover {
+            transform: translateY(-4px) scale(1.015);
+            background: rgba(20, 15, 45, 0.6);
+            border-color: var(--glass-border-hover);
+            box-shadow: 0 12px 40px rgba(0, 229, 255, 0.15), 0 0 20px rgba(179, 136, 255, 0.1);
+        }
+
+        .link-card:active {
+            transform: translateY(-1px) scale(1.002);
+        }
+
+        /* Icon wrapper */
+        .icon-wrapper {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            margin-right: 18px;
+            transition: transform 0.3s ease;
+        }
+
+        .link-card:hover .icon-wrapper {
+            transform: scale(1.1);
+        }
+
+        /* Brands Colors & Styles */
+        .youtube {
+            background: rgba(255, 0, 0, 0.12);
+            color: #ff0033;
+            border: 1px solid rgba(255, 0, 51, 0.25);
+            box-shadow: 0 0 10px rgba(255, 0, 51, 0.1);
+        }
+
+        .tiktok {
+            background: rgba(0, 242, 254, 0.1);
+            color: #00f2fe;
+            border: 1px solid rgba(0, 242, 254, 0.25);
+            box-shadow: 0 0 10px rgba(0, 242, 254, 0.1);
+        }
+
+        .instagram {
+            background: rgba(247, 119, 55, 0.1);
+            color: #fd1d1d;
+            border: 1px solid rgba(247, 119, 55, 0.25);
+            box-shadow: 0 0 10px rgba(247, 119, 55, 0.1);
+        }
+
+        /* Center content info */
+        .link-info {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            text-align: left;
+        }
+
+        .link-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 2px;
+            letter-spacing: -0.2px;
+        }
+
+        .link-description {
+            font-size: 13px;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        /* Right Arrow Icon */
+        .arrow-wrapper {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .link-card:hover .arrow-wrapper {
+            color: #00e5ff;
+            transform: translateX(4px);
+        }
+
+        /* Stagger animation delay */
+        .link-card:nth-child(1) { animation-delay: 0.15s; }
+        .link-card:nth-child(2) { animation-delay: 0.3s; }
+        .link-card:nth-child(3) { animation-delay: 0.45s; }
+        .link-card:nth-child(4) { animation-delay: 0.6s; }
+        .link-card:nth-child(5) { animation-delay: 0.75s; }
+
+        /* Footer */
+        .profile-footer {
+            text-align: center;
+            margin-top: auto;
+            animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: 0.9s;
+            opacity: 0;
+            width: 100%;
+        }
+
+        .share-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-color);
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(8px);
+            margin-bottom: 24px;
+            outline: none;
+        }
+
+        .share-btn:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(0, 229, 255, 0.4);
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .share-btn:active {
+            transform: translateY(0);
+        }
+
+        .copyright {
+            font-size: 12px;
+            color: var(--text-muted);
+            opacity: 0.7;
+            letter-spacing: 0.2px;
+        }
+
+        /* Animations */
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                transform: scale(0.98);
+                opacity: 0.6;
+                filter: blur(8px);
+            }
+            100% {
+                transform: scale(1.03);
+                opacity: 0.8;
+                filter: blur(12px);
+            }
+        }
+
+        /* Touch devices optimize */
+        @media (hover: none) {
+            .link-card:hover {
+                transform: none;
+                box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+                border-color: var(--glass-border);
+            }
+            .avatar-container:hover .profile-avatar {
+                transform: none;
+            }
+            .share-btn:hover {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Stars Canvas -->
+    <canvas id="stars-canvas"></canvas>
+
+    <!-- Nebula Blobs -->
+    <div class="nebula nebula-purple"></div>
+    <div class="nebula nebula-blue"></div>
+    <div class="nebula nebula-pink"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="profile-header">
+            <div class="avatar-container">
+                <img src="avatar.png" alt="Gabriel S. Gouvea" class="profile-avatar">
+                <div class="avatar-glow"></div>
+            </div>
+            <h1 class="profile-name">Gabriel S. Gouvea</h1>
+            <p class="profile-tagline">Criador de Conteúdo</p>
+            <div class="bio-container">
+                <span class="bio-tag">
+                    <i class="fa-solid fa-robot"></i> Inteligência Artificial
+                </span>
+                <span class="bio-tag">
+                    <i class="fa-solid fa-chart-line"></i> Finanças
+                </span>
+                <span class="bio-tag">
+                    <i class="fa-solid fa-meteor"></i> Ciência
+                </span>
+            </div>
+        </header>
+
+        <!-- Links List -->
+        <main class="links-list">
+            <!-- AI Channel -->
+            <a href="https://www.youtube.com/@SinapseIA" 
+               data-android-intent="intent://www.youtube.com/@SinapseIA#Intent;scheme=https;package=com.google.android.youtube;S.browser_fallback_url=https%3A%2F%2Fwww.youtube.com%2F%40SinapseIA;end"
+               class="link-card" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               aria-label="Acessar Canal de Inteligência Artificial SinapseIA no YouTube">
+                <div class="icon-wrapper youtube">
+                    <i class="fa-brands fa-youtube"></i>
+                </div>
+                <div class="link-info">
+                    <span class="link-title">Canal de Inteligência Artificial</span>
+                    <span class="link-description">Sinapse IA</span>
+                </div>
+                <div class="arrow-wrapper">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+            </a>
+
+            <!-- Finance Channel -->
+            <a href="https://www.youtube.com/@RealidadeFinanceira-k9o" 
+               data-android-intent="intent://www.youtube.com/@RealidadeFinanceira-k9o#Intent;scheme=https;package=com.google.android.youtube;S.browser_fallback_url=https%3A%2F%2Fwww.youtube.com%2F%40RealidadeFinanceira-k9o;end"
+               class="link-card" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               aria-label="Acessar Canal de Finanças Realidade Financeira no YouTube">
+                <div class="icon-wrapper youtube">
+                    <i class="fa-brands fa-youtube"></i>
+                </div>
+                <div class="link-info">
+                    <span class="link-title">Canal de Finanças</span>
+                    <span class="link-description">Realidade Financeira</span>
+                </div>
+                <div class="arrow-wrapper">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+            </a>
+
+            <!-- Science Channel -->
+            <a href="https://www.youtube.com/@Fragmentosestelar" 
+               data-android-intent="intent://www.youtube.com/@Fragmentosestelar#Intent;scheme=https;package=com.google.android.youtube;S.browser_fallback_url=https%3A%2F%2Fwww.youtube.com%2F%40Fragmentosestelar;end"
+               class="link-card" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               aria-label="Acessar Canal de Ciência Fragmentos Estelares no YouTube">
+                <div class="icon-wrapper youtube">
+                    <i class="fa-brands fa-youtube"></i>
+                </div>
+                <div class="link-info">
+                    <span class="link-title">Canal de Ciência</span>
+                    <span class="link-description">Fragmentos Estelares</span>
+                </div>
+                <div class="arrow-wrapper">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+            </a>
+
+            <!-- TikTok -->
+            <a href="https://www.tiktok.com/@gabriels.gouvea" 
+               data-android-intent="intent://www.tiktok.com/@gabriels.gouvea#Intent;scheme=https;package=com.zhiliaoapp.musically;S.browser_fallback_url=https%3A%2F%2Fwww.tiktok.com%2F%40gabriels.gouvea;end"
+               class="link-card" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               aria-label="Acessar perfil do TikTok de gabriels.gouvea">
+                <div class="icon-wrapper tiktok">
+                    <i class="fa-brands fa-tiktok"></i>
+                </div>
+                <div class="link-info">
+                    <span class="link-title">TikTok</span>
+                    <span class="link-description">@gabriels.gouvea</span>
+                </div>
+                <div class="arrow-wrapper">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+            </a>
+
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/gabriels.gouvea" 
+               data-android-intent="intent://instagram.com/_u/gabriels.gouvea#Intent;package=com.instagram.android;scheme=https;S.browser_fallback_url=https%3A%2F%2Fwww.instagram.com%2Fgabriels.gouvea;end"
+               class="link-card" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               aria-label="Acessar perfil do Instagram de gabriels.gouvea">
+                <div class="icon-wrapper instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </div>
+                <div class="link-info">
+                    <span class="link-title">Instagram</span>
+                    <span class="link-description">@gabriels.gouvea</span>
+                </div>
+                <div class="arrow-wrapper">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+            </a>
+        </main>
+    </div>
+
+    <!-- Background Stars Particle System & Direct Deep Linking Logic -->
+    <script>
+        /* 1. Deep Linking Navigation Logic */
+        document.querySelectorAll('.link-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+                
+                // Detection
+                const isAndroid = /Android/i.test(userAgent);
+                const isiOS = /iPhone|iPad|iPod/i.test(userAgent);
+                
+                // Get URLs
+                const webUrl = this.getAttribute('href');
+                const androidIntent = this.getAttribute('data-android-intent');
+
+                if (isAndroid && androidIntent) {
+                    // Prevent default to try Android Intent redirection
+                    e.preventDefault();
+                    window.location.href = androidIntent;
+                } else if (isiOS) {
+                    // For iOS, letting the default href behavior run is the best standard.
+                    // iOS supports Universal Links natively for YouTube, Instagram, and TikTok.
+                    // Clicking this link in Safari/Chrome will intercept and open the app natively
+                    // without any annoying popups if the app isn't installed.
+                } else {
+                    // Desktop or other systems open in new tab (handled by HTML target="_blank")
+                }
+            });
+        });
+
+        /* 3. Canvas Stars Twinkle Animation */
+        const canvas = document.getElementById('stars-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        let stars = [];
+        let shootingStars = [];
+        
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            initStars();
+        }
+        
+        function initStars() {
+            stars = [];
+            // Scale number of stars depending on screen size
+            const numStars = Math.floor((canvas.width * canvas.height) / 7500);
+            for (let i = 0; i < numStars; i++) {
+                stars.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 1.5 + 0.3,
+                    alpha: Math.random(),
+                    speed: Math.random() * 0.012 + 0.003,
+                    direction: Math.random() > 0.5 ? 1 : -1
+                });
+            }
+        }
+        
+        function createShootingStar() {
+            if (shootingStars.length < 2) {
+                shootingStars.push({
+                    x: Math.random() * canvas.width * 0.8,
+                    y: Math.random() * canvas.height * 0.4,
+                    length: Math.random() * 60 + 40,
+                    speed: Math.random() * 6 + 3,
+                    angle: Math.PI / 4 + (Math.random() * 0.15 - 0.075),
+                    opacity: 1,
+                    width: Math.random() * 1.5 + 0.8
+                });
+            }
+        }
+        
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw Stars
+            stars.forEach(star => {
+                star.alpha += star.speed * star.direction;
+                if (star.alpha <= 0.15 || star.alpha >= 0.85) {
+                    star.direction *= -1;
+                }
+                star.alpha = Math.max(0.15, Math.min(0.85, star.alpha));
+                
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 255, 255, ${star.alpha})`;
+                ctx.fill();
+            });
+            
+            // Draw Shooting Stars
+            for (let i = shootingStars.length - 1; i >= 0; i--) {
+                const ss = shootingStars[i];
+                const targetX = ss.x + Math.cos(ss.angle) * ss.length;
+                const targetY = ss.y + Math.sin(ss.angle) * ss.length;
+                
+                const gradient = ctx.createLinearGradient(ss.x, ss.y, targetX, targetY);
+                gradient.addColorStop(0, `rgba(0, 229, 255, ${ss.opacity})`);
+                gradient.addColorStop(0.3, `rgba(255, 255, 255, ${ss.opacity * 0.7})`);
+                gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+                
+                ctx.beginPath();
+                ctx.moveTo(ss.x, ss.y);
+                ctx.lineTo(targetX, targetY);
+                ctx.strokeStyle = gradient;
+                ctx.lineWidth = ss.width;
+                ctx.stroke();
+                
+                // Update position
+                ss.x += Math.cos(ss.angle) * ss.speed;
+                ss.y += Math.sin(ss.angle) * ss.speed;
+                ss.opacity -= 0.025;
+                
+                // Remove out of screen or faded
+                if (ss.opacity <= 0 || ss.x > canvas.width || ss.y > canvas.height) {
+                    shootingStars.splice(i, 1);
+                }
+            }
+            
+            // Randomly trigger shooting star
+            if (Math.random() < 0.003) {
+                createShootingStar();
+            }
+            
+            requestAnimationFrame(animate);
+        }
+        
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+        animate();
+    </script>
+</body>
+</html>
