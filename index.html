@@ -594,78 +594,139 @@
 
     </div>
 
-    <!-- JS Logic for Canvas & Deep Linking fallbacks -->
+    <!-- Banner: shown only inside Instagram/FB on iOS -->
+    <div id="inapp-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;
+        background:linear-gradient(135deg,rgba(13,10,31,0.97),rgba(30,20,60,0.97));
+        border-top:1px solid rgba(0,229,255,0.3);padding:18px 20px 24px;
+        box-shadow:0 -8px 32px rgba(0,0,0,0.6);backdrop-filter:blur(20px);
+        -webkit-backdrop-filter:blur(20px);font-family:'Outfit',sans-serif;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+            <span style="font-size:22px;">🔒</span>
+            <div>
+                <p style="color:#fff;font-weight:700;font-size:15px;margin:0 0 2px;">Abrir no navegador</p>
+                <p style="color:#a1a1cb;font-size:13px;margin:0;">O Instagram bloqueia links externos. Para abrir o app corretamente:</p>
+            </div>
+        </div>
+        <ol style="color:#d1d1f0;font-size:13px;padding-left:20px;margin:0 0 14px;line-height:1.7;">
+            <li>Toque nos <strong style="color:#00e5ff;">três pontos ···</strong> (canto superior direito)</li>
+            <li>Selecione <strong style="color:#00e5ff;">"Abrir no navegador"</strong></li>
+        </ol>
+        <div style="display:flex;gap:10px;">
+            <a id="inapp-banner-link" href="#" target="_blank"
+                style="flex:1;padding:12px;background:linear-gradient(135deg,#00e5ff,#b388ff);
+                border-radius:12px;text-align:center;color:#0d0a1f;font-weight:700;
+                font-size:14px;text-decoration:none;">Abrir assim mesmo</a>
+            <button onclick="document.getElementById('inapp-banner').style.display='none'"
+                style="padding:12px 16px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);
+                border-radius:12px;color:#a1a1cb;font-family:'Outfit',sans-serif;font-size:14px;
+                cursor:pointer;">Fechar</button>
+        </div>
+    </div>
+
+    <!-- JS Logic for Canvas & Deep Linking -->
     <script>
-        /* 1. Deep Linking & Fallback Logic */
+        /* ── Helpers ─────────────────────────────────────────────── */
+        const ua = navigator.userAgent || navigator.vendor || window.opera;
+        const isMobile   = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua);
+        const isiOS      = /iPhone|iPad|iPod/i.test(ua);
+        const isAndroid  = /Android/i.test(ua);
+        const isInstagram = ua.indexOf('Instagram') > -1;
+        const isFB        = ua.indexOf('FBAN') > -1 || ua.indexOf('FBAV') > -1;
+        const isInApp     = isInstagram || isFB || ua.indexOf('MicroMessenger') > -1;
+
+        /* Build an Android intent:// URL that escapes any WebView */
+        function toAndroidIntent(webUrl, pkg) {
+            // intent://<host><path>#Intent;scheme=https;package=<pkg>;end
+            const u = new URL(webUrl);
+            return `intent://${u.host}${u.pathname}${u.search}#Intent;scheme=https;package=${pkg};end`;
+        }
+
+        const ANDROID_PKGS = {
+            'youtube.com':   'com.google.android.youtube',
+            'tiktok.com':    'com.zhiliaoapp.musically',
+            'instagram.com': 'com.instagram.android',
+        };
+
+        function getAndroidIntent(webUrl) {
+            try {
+                const host = new URL(webUrl).hostname.replace('www.','');
+                for (const [domain, pkg] of Object.entries(ANDROID_PKGS)) {
+                    if (host.includes(domain)) return toAndroidIntent(webUrl, pkg);
+                }
+            } catch(e) {}
+            return null;
+        }
+
+        /* iOS app-scheme map (fallback if no Universal Link) */
+        function getIOSScheme(appUrl, webUrl) {
+            if (!appUrl) return null;
+            // TikTok iOS scheme
+            if (appUrl.startsWith('snssdk1128://')) {
+                return 'tiktok://user?username=gabriels.gouvea';
+            }
+            return appUrl;
+        }
+
+        /* ── Main click handler ───────────────────────────────────── */
         document.querySelectorAll('.link-card').forEach(card => {
             card.addEventListener('click', function(e) {
-                const ua = navigator.userAgent || navigator.vendor || window.opera;
-                
-                // Detect mobile devices
-                const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua);
-                
+
                 if (!isMobile) {
-                    // PC / Desktop: do NOT prevent default, browser opens the standard href in target="_blank" natively
+                    // Desktop: let target="_blank" work normally
                     return;
                 }
 
-                // Mobile path: prevent default browser navigation to handle deep linking
                 e.preventDefault();
-                
                 const webUrl = this.getAttribute('href');
-                let appUrl = this.getAttribute('data-app-url');
-                
-                // Detect internal/in-app browsers (Instagram, FB, etc.)
-                const isInstagram = ua.indexOf('Instagram') > -1;
-                const isFB = ua.indexOf('FBAN') > -1 || ua.indexOf('FBAV') > -1;
-                const isInApp = isInstagram || isFB || ua.indexOf('MicroMessenger') > -1;
-                
-                const isiOS = /iPhone|iPad|iPod/i.test(ua);
-                
-                // Adapt TikTok scheme for iOS if necessary
-                if (isiOS && appUrl.startsWith('snssdk1128://')) {
-                    appUrl = 'tiktok://user?username=gabriels.gouvea';
+                const appUrl = this.getAttribute('data-app-url');
+
+                /* ── iOS inside Instagram: can't auto-escape the WebView ── */
+                if (isiOS && isInApp) {
+                    // Show the friendly banner with the web URL as fallback
+                    const banner = document.getElementById('inapp-banner');
+                    document.getElementById('inapp-banner-link').href = webUrl;
+                    banner.style.display = 'block';
+                    // On iOS 16+ we can also try the x-safari scheme (won't work on all devices)
+                    // but the banner is the reliable UX path.
+                    return;
                 }
 
-                let isPageHidden = false;
-
-                // Track if user leaves the browser (meaning the app opened successfully)
-                const handleVisibility = () => {
-                    if (document.hidden || document.webkitHidden) {
-                        isPageHidden = true;
+                /* ── Android (including inside Instagram WebView) ─────── */
+                if (isAndroid) {
+                    // intent:// scheme works even inside the Instagram WebView on Android
+                    const intent = getAndroidIntent(webUrl);
+                    if (intent) {
+                        window.location.href = intent;
+                        return; // Android OS handles the rest (opens app or Play Store)
                     }
-                };
-
-                document.addEventListener('visibilitychange', handleVisibility);
-                document.addEventListener('webkitvisibilitychange', handleVisibility);
-                window.addEventListener('pagehide', handleVisibility);
-
-                // Attempt to open the native app scheme
-                if (appUrl) {
-                    window.location.href = appUrl;
+                    // Fallback for unknown Android URLs
+                    window.location.href = webUrl;
+                    return;
                 }
 
-                // Timeout fallback: if not redirected after 1.5 seconds, open web version
-                setTimeout(() => {
-                    if (!isPageHidden) {
-                        if (isInApp) {
-                            // Inside In-App browsers (Instagram/FB), redirection is safer in the same tab
+                /* ── iOS in regular Safari / Chrome ─────────────────────── */
+                if (isiOS) {
+                    const scheme = getIOSScheme(appUrl, webUrl);
+                    let didHide = false;
+                    const onHide = () => { didHide = true; };
+                    document.addEventListener('visibilitychange', onHide);
+                    window.addEventListener('pagehide', onHide);
+
+                    if (scheme) window.location.href = scheme;
+
+                    setTimeout(() => {
+                        document.removeEventListener('visibilitychange', onHide);
+                        window.removeEventListener('pagehide', onHide);
+                        if (!didHide) {
+                            // App not installed — open web
                             window.location.href = webUrl;
-                        } else {
-                            // Standard mobile browser: open in a new tab. 
-                            // If blocked by popup blocker due to async execution, fallback to same tab.
-                            const opened = window.open(webUrl, '_blank');
-                            if (!opened || opened.closed || typeof opened.closed === 'undefined') {
-                                window.location.href = webUrl;
-                            }
                         }
-                    }
-                    
-                    // Cleanup event listeners
-                    document.removeEventListener('visibilitychange', handleVisibility);
-                    document.removeEventListener('webkitvisibilitychange', handleVisibility);
-                    window.removeEventListener('pagehide', handleVisibility);
-                }, 1500);
+                    }, 1500);
+                    return;
+                }
+
+                /* ── Other mobile (rare) ─────────────────────────────── */
+                window.location.href = webUrl;
             });
         });
 
