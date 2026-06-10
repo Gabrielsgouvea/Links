@@ -6,19 +6,19 @@
     
     <!-- SEO Meta Tags -->
     <title>Gabriel S. Gouvea - Links Oficiais</title>
-    <meta name="description" content="Acesse todos os canais oficiais de Gabriel S. Gouvea: Inteligência Artificial (Sinapse IA), Finanças (Realidade Financeira), Ciência (Fragmentos Estelares), TikTok e Instagram.">
+    <meta name="description" content="Acesse todos os canais e redes sociais oficiais de Gabriel S. Gouvea: Inteligência Artificial (Sinapse IA), Finanças (Realidade Financeira), Ciência (Fragmentos Estelares), TikTok e Instagram.">
     <meta name="author" content="Gabriel S. Gouvea">
     
     <!-- Open Graph (Facebook / LinkedIn) -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Gabriel S. Gouvea - Links Oficiais">
-    <meta property="og:description" content="Conecte-se com os canais e redes de Inteligência Artificial, Finanças e Ciência.">
+    <meta property="og:description" content="Conecte-se com os canais e redes de Inteligência Artificial, Finanças e Ciência de Gabriel S. Gouvea.">
     <meta property="og:image" content="avatar.png">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:title" content="Gabriel S. Gouvea - Links Oficiais">
-    <meta property="twitter:description" content="Conecte-se com os canais e redes de Inteligência Artificial, Finanças e Ciência.">
+    <meta property="twitter:description" content="Conecte-se com os canais e redes de Inteligência Artificial, Finanças e Ciência de Gabriel S. Gouvea.">
     <meta property="twitter:image" content="avatar.png">
 
     <!-- Google Fonts -->
@@ -37,7 +37,7 @@
             --text-muted: #a1a1cb;
             --glass-bg: rgba(13, 10, 31, 0.45);
             --glass-border: rgba(255, 255, 255, 0.08);
-            --glass-border-hover: rgba(0, 229, 255, 0.3);
+            --glass-border-hover: rgba(0, 229, 255, 0.35);
             --glow-color: rgba(0, 229, 255, 0.4);
             --primary-gradient: linear-gradient(135deg, #00e5ff 0%, #b388ff 50%, #ff4081 100%);
             --youtube-color: #ff0000;
@@ -257,6 +257,7 @@
             animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             position: relative;
             overflow: hidden;
+            cursor: pointer;
         }
 
         /* Shimmer Glow effect inside cards */
@@ -376,7 +377,7 @@
         /* Footer */
         .profile-footer {
             text-align: center;
-            margin-top: auto;
+            margin-top: 20px;
             animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             animation-delay: 0.9s;
             opacity: 0;
@@ -463,7 +464,7 @@
 </head>
 <body>
 
-    <!-- Stars Canvas -->
+    <!-- Stars Canvas Background -->
     <canvas id="stars-canvas"></canvas>
 
     <!-- Nebula Blobs -->
@@ -482,7 +483,7 @@
             <p class="profile-tagline">Criador de Conteúdo</p>
             <div class="bio-container">
                 <span class="bio-tag">
-                    <i class="fa-solid fa-robot"></i> Inteligência Artificial
+                    <i class="fa-solid fa-robot"></i> IA
                 </span>
                 <span class="bio-tag">
                     <i class="fa-solid fa-chart-line"></i> Finanças
@@ -496,11 +497,10 @@
         <!-- Links List -->
         <main class="links-list">
             <!-- AI Channel -->
-            <a href="https://www.youtube.com/@SinapseIA" 
-               data-android-intent="intent://www.youtube.com/@SinapseIA#Intent;scheme=https;package=com.google.android.youtube;S.browser_fallback_url=https%3A%2F%2Fwww.youtube.com%2F%40SinapseIA;end"
+            <a href="#" 
+               data-web-url="https://www.youtube.com/@SinapseIA" 
+               data-app-url="youtube://www.youtube.com/@SinapseIA"
                class="link-card" 
-               target="_blank" 
-               rel="noopener noreferrer"
                aria-label="Acessar Canal de Inteligência Artificial SinapseIA no YouTube">
                 <div class="icon-wrapper youtube">
                     <i class="fa-brands fa-youtube"></i>
@@ -515,11 +515,10 @@
             </a>
 
             <!-- Finance Channel -->
-            <a href="https://www.youtube.com/@RealidadeFinanceira-k9o" 
-               data-android-intent="intent://www.youtube.com/@RealidadeFinanceira-k9o#Intent;scheme=https;package=com.google.android.youtube;S.browser_fallback_url=https%3A%2F%2Fwww.youtube.com%2F%40RealidadeFinanceira-k9o;end"
+            <a href="#" 
+               data-web-url="https://www.youtube.com/@RealidadeFinanceira-k9o" 
+               data-app-url="youtube://www.youtube.com/@RealidadeFinanceira-k9o"
                class="link-card" 
-               target="_blank" 
-               rel="noopener noreferrer"
                aria-label="Acessar Canal de Finanças Realidade Financeira no YouTube">
                 <div class="icon-wrapper youtube">
                     <i class="fa-brands fa-youtube"></i>
@@ -534,11 +533,10 @@
             </a>
 
             <!-- Science Channel -->
-            <a href="https://www.youtube.com/@Fragmentosestelar" 
-               data-android-intent="intent://www.youtube.com/@Fragmentosestelar#Intent;scheme=https;package=com.google.android.youtube;S.browser_fallback_url=https%3A%2F%2Fwww.youtube.com%2F%40Fragmentosestelar;end"
+            <a href="#" 
+               data-web-url="https://www.youtube.com/@Fragmentosestelar" 
+               data-app-url="youtube://www.youtube.com/@Fragmentosestelar"
                class="link-card" 
-               target="_blank" 
-               rel="noopener noreferrer"
                aria-label="Acessar Canal de Ciência Fragmentos Estelares no YouTube">
                 <div class="icon-wrapper youtube">
                     <i class="fa-brands fa-youtube"></i>
@@ -553,11 +551,10 @@
             </a>
 
             <!-- TikTok -->
-            <a href="https://www.tiktok.com/@gabriels.gouvea" 
-               data-android-intent="intent://www.tiktok.com/@gabriels.gouvea#Intent;scheme=https;package=com.zhiliaoapp.musically;S.browser_fallback_url=https%3A%2F%2Fwww.tiktok.com%2F%40gabriels.gouvea;end"
+            <a href="#" 
+               data-web-url="https://www.tiktok.com/@gabriels.gouvea" 
+               data-app-url="snssdk1128://user/profile/gabriels.gouvea"
                class="link-card" 
-               target="_blank" 
-               rel="noopener noreferrer"
                aria-label="Acessar perfil do TikTok de gabriels.gouvea">
                 <div class="icon-wrapper tiktok">
                     <i class="fa-brands fa-tiktok"></i>
@@ -572,11 +569,10 @@
             </a>
 
             <!-- Instagram -->
-            <a href="https://www.instagram.com/gabriels.gouvea" 
-               data-android-intent="intent://instagram.com/_u/gabriels.gouvea#Intent;package=com.instagram.android;scheme=https;S.browser_fallback_url=https%3A%2F%2Fwww.instagram.com%2Fgabriels.gouvea;end"
+            <a href="#" 
+               data-web-url="https://www.instagram.com/gabriels.gouvea" 
+               data-app-url="instagram://user?username=gabriels.gouvea"
                class="link-card" 
-               target="_blank" 
-               rel="noopener noreferrer"
                aria-label="Acessar perfil do Instagram de gabriels.gouvea">
                 <div class="icon-wrapper instagram">
                     <i class="fa-brands fa-instagram"></i>
@@ -590,37 +586,86 @@
                 </div>
             </a>
         </main>
+
     </div>
 
-    <!-- Background Stars Particle System & Direct Deep Linking Logic -->
+    <!-- JS Logic for Canvas & Deep Linking fallbacks -->
     <script>
-        /* 1. Deep Linking Navigation Logic */
+        /* 1. Deep Linking & Fallback Logic */
         document.querySelectorAll('.link-card').forEach(card => {
             card.addEventListener('click', function(e) {
-                const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+                e.preventDefault();
                 
-                // Detection
-                const isAndroid = /Android/i.test(userAgent);
-                const isiOS = /iPhone|iPad|iPod/i.test(userAgent);
+                const webUrl = this.getAttribute('data-web-url');
+                let appUrl = this.getAttribute('data-app-url');
                 
-                // Get URLs
-                const webUrl = this.getAttribute('href');
-                const androidIntent = this.getAttribute('data-android-intent');
+                const ua = navigator.userAgent || navigator.vendor || window.opera;
+                
+                // Detect mobile devices
+                const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua);
+                
+                // Detect internal/in-app browsers (Instagram, FB, etc.)
+                const isInstagram = ua.indexOf('Instagram') > -1;
+                const isFB = ua.indexOf('FBAN') > -1 || ua.indexOf('FBAV') > -1;
+                const isInApp = isInstagram || isFB || ua.indexOf('MicroMessenger') > -1;
 
-                if (isAndroid && androidIntent) {
-                    // Prevent default to try Android Intent redirection
-                    e.preventDefault();
-                    window.location.href = androidIntent;
-                } else if (isiOS) {
-                    // For iOS, letting the default href behavior run is the best standard.
-                    // iOS supports Universal Links natively for YouTube, Instagram, and TikTok.
-                    // Clicking this link in Safari/Chrome will intercept and open the app natively
-                    // without any annoying popups if the app isn't installed.
-                } else {
-                    // Desktop or other systems open in new tab (handled by HTML target="_blank")
+                if (!isMobile) {
+                    // PC / Desktop: open web URL in a new tab immediately
+                    window.open(webUrl, '_blank');
+                    return;
                 }
+
+                // Mobile path:
+                const isiOS = /iPhone|iPad|iPod/i.test(ua);
+                
+                // Adapt TikTok scheme for iOS if necessary
+                if (isiOS && appUrl.startsWith('snssdk1128://')) {
+                    appUrl = 'tiktok://user?username=gabriels.gouvea';
+                }
+
+                let isPageHidden = false;
+
+                // Track if user leaves the browser (meaning the app opened successfully)
+                const handleVisibility = () => {
+                    if (document.hidden || document.webkitHidden) {
+                        isPageHidden = true;
+                    }
+                };
+
+                document.addEventListener('visibilitychange', handleVisibility);
+                document.addEventListener('webkitvisibilitychange', handleVisibility);
+                window.addEventListener('pagehide', handleVisibility);
+
+                // Attempt to open the native app scheme
+                if (appUrl) {
+                    window.location.href = appUrl;
+                }
+
+                // Timeout fallback: if not redirected after 1.5 seconds, open web version
+                setTimeout(() => {
+                    if (!isPageHidden) {
+                        if (isInApp) {
+                            // Inside In-App browsers (Instagram/FB), redirection is safer in the same tab
+                            window.location.href = webUrl;
+                        } else {
+                            // Standard mobile browser: open in a new tab. 
+                            // If blocked by popup blocker due to async execution, fallback to same tab.
+                            const opened = window.open(webUrl, '_blank');
+                            if (!opened || opened.closed || typeof opened.closed === 'undefined') {
+                                window.location.href = webUrl;
+                            }
+                        }
+                    }
+                    
+                    // Cleanup event listeners
+                    document.removeEventListener('visibilitychange', handleVisibility);
+                    document.removeEventListener('webkitvisibilitychange', handleVisibility);
+                    window.removeEventListener('pagehide', handleVisibility);
+                }, 1500);
             });
         });
+
+
 
         /* 3. Canvas Stars Twinkle Animation */
         const canvas = document.getElementById('stars-canvas');
@@ -637,7 +682,6 @@
         
         function initStars() {
             stars = [];
-            // Scale number of stars depending on screen size
             const numStars = Math.floor((canvas.width * canvas.height) / 7500);
             for (let i = 0; i < numStars; i++) {
                 stars.push({
@@ -700,18 +744,15 @@
                 ctx.lineWidth = ss.width;
                 ctx.stroke();
                 
-                // Update position
                 ss.x += Math.cos(ss.angle) * ss.speed;
                 ss.y += Math.sin(ss.angle) * ss.speed;
                 ss.opacity -= 0.025;
                 
-                // Remove out of screen or faded
                 if (ss.opacity <= 0 || ss.x > canvas.width || ss.y > canvas.height) {
                     shootingStars.splice(i, 1);
                 }
             }
             
-            // Randomly trigger shooting star
             if (Math.random() < 0.003) {
                 createShootingStar();
             }
