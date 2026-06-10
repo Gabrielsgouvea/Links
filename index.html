@@ -497,10 +497,11 @@
         <!-- Links List -->
         <main class="links-list">
             <!-- AI Channel -->
-            <a href="#" 
-               data-web-url="https://www.youtube.com/@SinapseIA" 
+            <a href="https://www.youtube.com/@SinapseIA" 
                data-app-url="youtube://www.youtube.com/@SinapseIA"
                class="link-card" 
+               target="_blank"
+               rel="noopener noreferrer"
                aria-label="Acessar Canal de Inteligência Artificial SinapseIA no YouTube">
                 <div class="icon-wrapper youtube">
                     <i class="fa-brands fa-youtube"></i>
@@ -515,10 +516,11 @@
             </a>
 
             <!-- Finance Channel -->
-            <a href="#" 
-               data-web-url="https://www.youtube.com/@RealidadeFinanceira-k9o" 
+            <a href="https://www.youtube.com/@RealidadeFinanceira-k9o" 
                data-app-url="youtube://www.youtube.com/@RealidadeFinanceira-k9o"
                class="link-card" 
+               target="_blank"
+               rel="noopener noreferrer"
                aria-label="Acessar Canal de Finanças Realidade Financeira no YouTube">
                 <div class="icon-wrapper youtube">
                     <i class="fa-brands fa-youtube"></i>
@@ -533,10 +535,11 @@
             </a>
 
             <!-- Science Channel -->
-            <a href="#" 
-               data-web-url="https://www.youtube.com/@Fragmentosestelar" 
+            <a href="https://www.youtube.com/@Fragmentosestelar" 
                data-app-url="youtube://www.youtube.com/@Fragmentosestelar"
                class="link-card" 
+               target="_blank"
+               rel="noopener noreferrer"
                aria-label="Acessar Canal de Ciência Fragmentos Estelares no YouTube">
                 <div class="icon-wrapper youtube">
                     <i class="fa-brands fa-youtube"></i>
@@ -551,10 +554,11 @@
             </a>
 
             <!-- TikTok -->
-            <a href="#" 
-               data-web-url="https://www.tiktok.com/@gabriels.gouvea" 
+            <a href="https://www.tiktok.com/@gabriels.gouvea" 
                data-app-url="snssdk1128://user/profile/gabriels.gouvea"
                class="link-card" 
+               target="_blank"
+               rel="noopener noreferrer"
                aria-label="Acessar perfil do TikTok de gabriels.gouvea">
                 <div class="icon-wrapper tiktok">
                     <i class="fa-brands fa-tiktok"></i>
@@ -569,10 +573,11 @@
             </a>
 
             <!-- Instagram -->
-            <a href="#" 
-               data-web-url="https://www.instagram.com/gabriels.gouvea" 
+            <a href="https://www.instagram.com/gabriels.gouvea" 
                data-app-url="instagram://user?username=gabriels.gouvea"
                class="link-card" 
+               target="_blank"
+               rel="noopener noreferrer"
                aria-label="Acessar perfil do Instagram de gabriels.gouvea">
                 <div class="icon-wrapper instagram">
                     <i class="fa-brands fa-instagram"></i>
@@ -594,28 +599,27 @@
         /* 1. Deep Linking & Fallback Logic */
         document.querySelectorAll('.link-card').forEach(card => {
             card.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const webUrl = this.getAttribute('data-web-url');
-                let appUrl = this.getAttribute('data-app-url');
-                
                 const ua = navigator.userAgent || navigator.vendor || window.opera;
                 
                 // Detect mobile devices
                 const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua);
                 
+                if (!isMobile) {
+                    // PC / Desktop: do NOT prevent default, browser opens the standard href in target="_blank" natively
+                    return;
+                }
+
+                // Mobile path: prevent default browser navigation to handle deep linking
+                e.preventDefault();
+                
+                const webUrl = this.getAttribute('href');
+                let appUrl = this.getAttribute('data-app-url');
+                
                 // Detect internal/in-app browsers (Instagram, FB, etc.)
                 const isInstagram = ua.indexOf('Instagram') > -1;
                 const isFB = ua.indexOf('FBAN') > -1 || ua.indexOf('FBAV') > -1;
                 const isInApp = isInstagram || isFB || ua.indexOf('MicroMessenger') > -1;
-
-                if (!isMobile) {
-                    // PC / Desktop: open web URL in a new tab immediately
-                    window.open(webUrl, '_blank');
-                    return;
-                }
-
-                // Mobile path:
+                
                 const isiOS = /iPhone|iPad|iPod/i.test(ua);
                 
                 // Adapt TikTok scheme for iOS if necessary
